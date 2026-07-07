@@ -4,6 +4,11 @@ from telegram import Bot
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
 
+print("========== DEBUG ==========")
+print("BOT_TOKEN:", BOT_TOKEN)
+print("CHAT_ID:", CHAT_ID)
+print("===========================")
+
 bot = Bot(token=BOT_TOKEN)
 
 async def send_alert(title, url, stock):
