@@ -1,22 +1,38 @@
-import os
-from telegram import Bot
-from telegram.constants import ParseMode
-from dotenv import load_dotenv
+import asyncio
+import json
 
-load_dotenv()
+from amazon import check_amazon
+from flipkart import check_flipkart
+from telegram_bot import send_alert
+from config import CHECK_INTERVAL, PRODUCTS_FILE
 
-BOT_TOKEN = os.getenv("BOT_TOKEN")
-CHAT_ID = os.getenv("CHAT_ID")
 
-bot = Bot(token=BOT_TOKEN)
+async def monitor():
+    while True:
 
-async def send_message(message):
-    await bot.send_message(
-        chat_id=CHAT_ID,
-        text=message,
-        parse_mode=ParseMode.HTML
-    )
+        with open(PRODUCTS_FILE, "r") as f:
+            data = json.load(f)
+
+        for product in data["products"]:
+
+            if product["store"] == "amazon":
+                result = check_amazon(product["url"])
+
+            elif product["store"] == "flipkart":
+                result = check_flipkart(product["url"])
+
+            else:
+                continue
+
+            if result["stock"]:
+                await send_alert(
+                    result["title"],
+                    result["url"],
+                    True
+                )
+
+        await asyncio.sleep(CHECK_INTERVAL)
+
 
 if __name__ == "__main__":
-    import asyncio
-    asyncio.run(send_message("✅ Gagan Stock Alert Bot Started Successfully!"))
+    asyncio.run(monitor())
