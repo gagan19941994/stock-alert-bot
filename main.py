@@ -1,4 +1,14 @@
+import asyncio
+import json
+
+from amazon import check_amazon
+from flipkart import check_flipkart
+from telegram_bot import send_alert
+from config import CHECK_INTERVAL, PRODUCTS_FILE
+
+
 async def monitor():
+    # Startup test message
     await send_alert(
         "✅ Bot Started Successfully",
         "https://railway.app",
@@ -28,3 +38,7 @@ async def monitor():
                 )
 
         await asyncio.sleep(CHECK_INTERVAL)
+
+
+if __name__ == "__main__":
+    asyncio.run(monitor())
