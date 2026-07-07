@@ -1,0 +1,39 @@
+{
+  "products": [
+    {
+      "name": "Amazon Product 1",
+      "store": "amazon",
+      "url": "https://amzn.in/d/00LtdTg4"
+    },
+    {
+      "name": "Amazon Product 2",
+      "store": "amazon",
+      "url": "https://amzn.in/d/0fJKVZB0"
+    },
+    {
+      "name": "Amazon Product 3",
+      "store": "amazon",
+      "url": "https://amzn.in/d/0bWku2dp"
+    },
+    {
+      "name": "Amazon Product 4",
+      "store": "amazon",
+      "url": "https://amzn.in/d/03YQsgdC"
+    },
+    {
+      "name": "Amazon Product 5",
+      "store": "amazon",
+      "url": "https://amzn.in/d/05Env7jW"
+    },
+    {
+      "name": "Amazon Product 6",
+      "store": "amazon",
+      "url": "https://amzn.in/d/0dXNqg2V"
+    },
+    {
+      "name": "Flipkart Product",
+      "store": "flipkart",
+      "url": "https://dl.flipkart.com/dl/product/p/item?pid=GMCGZCYPAFYBUNAR&lid=LSTGMCGZCYPAFYBUNARLIR5LG&_refId=&_appId=CL"
+    }
+  ]
+}
